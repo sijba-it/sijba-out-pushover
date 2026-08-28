@@ -1,0 +1,12 @@
+# Runs the test suite inside the build, so `docker build -f Dockerfile.test .`
+# fails when a test fails — mirrors the sijba core repo's gate.
+FROM docker.io/library/python:3.11-slim
+
+WORKDIR /app
+RUN pip install --no-cache-dir pytest pyflakes
+
+COPY main.py .
+COPY tests/ tests/
+
+RUN python -m pyflakes main.py tests/
+RUN python -m pytest -q

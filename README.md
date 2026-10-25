@@ -90,3 +90,4 @@ This repo has no Gitea remote or k8s manifests yet. To ship it:
 3. Point `Jenkinsfile`'s ansible-bump stage at the new deployment's image line
    (already assumes `kustomize-k8s/bases/sijba-out-pushover/deployment.yaml`).
 
+

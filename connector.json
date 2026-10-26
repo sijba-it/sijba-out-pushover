@@ -10,11 +10,11 @@
      "help": "Create an application at pushover.net/apps/build."},
     {"name": "PUSHOVER_USER_KEY", "label": "User key", "secret": true, "required": true,
      "help": "Shown on your Pushover dashboard."},
-    {"name": "PUSHOVER_MATCH_SOURCES", "label": "Reply sources", "required": true,
+    {"name": "PUSHOVER_MATCH_SOURCES", "label": "Reply sources", "required": true, "advanced": true,
      "default": "webhook:voice",
      "help": "Comma-separated envelope sources whose replies are pushed, e.g. webhook:voice."},
     {"name": "PUSHOVER_TITLE", "label": "Title", "default": "Sijba",
      "help": "Bold headline of every push message."},
-    {"name": "PUSHOVER_PRIORITY", "label": "Priority (-2..2)", "default": "0"}
+    {"name": "PUSHOVER_PRIORITY", "label": "Priority (-2..2)", "default": "0", "advanced": true}
   ]
 }

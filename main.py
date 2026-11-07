@@ -28,7 +28,10 @@ LISTEN_HOST = os.environ.get("LISTEN_HOST", "0.0.0.0")
 LISTEN_PORT = int(os.environ.get("LISTEN_PORT", "9101"))
 HANDLER_ID = os.environ.get("HANDLER_ID", "pushover")
 TTL_SECONDS = int(os.environ.get("TTL_SECONDS", "90"))
-HEARTBEAT_EVERY = max(15, TTL_SECONDS // 3)
+# Core restores registrations across its own restarts, so this is no longer
+# the only thing standing between a Core restart and a lost message — but it
+# is still what re-registers this pod after *it* moves, so keep it brisk.
+HEARTBEAT_EVERY = max(10, TTL_SECONDS // 6)
 REGISTER_PRIORITY = float(os.environ.get("REGISTER_PRIORITY", "50"))
 
 PUSHOVER_APP_TOKEN = os.environ.get("PUSHOVER_APP_TOKEN", "").strip()

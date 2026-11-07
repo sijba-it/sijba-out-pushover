@@ -32,7 +32,7 @@ for how named webhooks and per-source routing fit together.
 
 | Env | Default | Description |
 |-----|---------|-------------|
-| `SIJBA_URL` | `https://sijba.edv-bartl.at` | Core base URL |
+| `SIJBA_URL` | *(required)* | Core base URL, e.g. `https://<account>.sijba.eu` |
 | `SIJBA_TOKEN` | *(required)* | Bearer token for Core's API |
 | `PUSHOVER_APP_TOKEN` | *(required)* | Pushover application token |
 | `PUSHOVER_USER_KEY` | *(required)* | Pushover user/group key — the recipient. One key per deployed instance; run a second instance under a different `HANDLER_ID` if a different source needs a different recipient. |

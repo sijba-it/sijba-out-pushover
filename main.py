@@ -22,7 +22,7 @@ import urllib.parse
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
-SIJBA_URL = os.environ.get("SIJBA_URL", "https://sijba.edv-bartl.at").rstrip("/")
+SIJBA_URL = os.environ.get("SIJBA_URL", "").rstrip("/")  # e.g. https://<account>.sijba.eu
 SIJBA_TOKEN = os.environ.get("SIJBA_TOKEN", "").strip()
 LISTEN_HOST = os.environ.get("LISTEN_HOST", "0.0.0.0")
 LISTEN_PORT = int(os.environ.get("LISTEN_PORT", "9101"))
@@ -78,6 +78,8 @@ ADVERTISE_URL = os.environ.get("ADVERTISE_URL", "").rstrip("/") or _default_adve
 def _api(method: str, path: str, body: dict | None = None) -> dict:
     if not SIJBA_TOKEN:
         raise RuntimeError("SIJBA_TOKEN is required")
+    if not SIJBA_URL:
+        raise RuntimeError("SIJBA_URL is required (e.g. https://<account>.sijba.eu)")
     data = None if body is None else json.dumps(body).encode()
     req = urllib.request.Request(
         f"{SIJBA_URL}{path}",
